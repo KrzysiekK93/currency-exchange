@@ -8,18 +8,20 @@
       <b-navbar-nav>
         <router-link class="nav-link" to="/">Home</router-link>
         <router-link class="nav-link" to="/about">About</router-link>
-        <router-link class="nav-link" v-if="user.loggedIn" to="/dashboard">Dashobard</router-link>
+        <router-link class="nav-link" v-if="user.loggedIn" to="/dashboard"
+          >Dashobard</router-link
+        >
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto nav-fn">
         <template v-if="user.loggedIn" right>
-            <div class="nav-item user-name">{{ user.data.displayName }}</div>
-            <a class="nav-link" @click.prevent="signOut">Sign out</a>
+          <div class="nav-item user-name">{{ user.data.displayName }}</div>
+          <a class="nav-link" @click.prevent="signOut">Sign out</a>
         </template>
         <template v-else>
-            <router-link to="login" class="nav-link">Login</router-link>
-            <router-link to="register" class="nav-link">Register</router-link>
+          <router-link to="login" class="nav-link">Login</router-link>
+          <router-link to="register" class="nav-link">Register</router-link>
         </template>
       </b-navbar-nav>
     </b-collapse>
@@ -53,32 +55,32 @@ export default {
 
 <style lang="scss">
 .navbar {
-    margin-bottom: 24px;
-    .navbar-brand{
-        cursor: default;
+  margin-bottom: 24px;
+  .navbar-brand {
+    cursor: default;
+  }
+  .nav-link {
+    cursor: pointer;
+  }
+  .navbar-nav {
+    .user-name {
+      padding: 8px;
+      font-weight: 600;
+      color: white;
     }
-    .nav-link {
-        cursor: pointer;
-    }
-    .navbar-nav {
-        .user-name {
-            padding: 8px;
-            font-weight: 600;
-            color: white;
-        }
-    }
+  }
 }
 
 @media only screen and (max-width: 991px) {
-    .navbar-nav.nav-fn{
-        flex-direction: row;
-        justify-content: space-between;
-        .nav-link {
-            margin-right: 12px;
-            &:last-of-type {
-                margin-right: 0;
-            }
-        }
+  .navbar-nav.nav-fn {
+    flex-direction: row;
+    justify-content: space-between;
+    .nav-link {
+      margin-right: 12px;
+      &:last-of-type {
+        margin-right: 0;
+      }
     }
+  }
 }
 </style>
