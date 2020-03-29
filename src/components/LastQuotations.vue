@@ -1,7 +1,9 @@
 <template>
   <div class="quotations">
     <LastQuotationsTable
-      v-bind:quotations="quotations.data"
+      v-bind:quotationsArray="quotationsArray"
+      v-bind:date="date"
+      v-bind:baseCurrency="baseCurrency"
       v-bind:loader="loader"
     />
   </div>
@@ -18,14 +20,31 @@ export default {
   },
   data() {
     return {
-      quotations: {},
+      quotationsArray: [],
+      date: "",
+      baseCurrency: "",
       loader: true
     };
   },
   mounted() {
     axios
       .get("https://api.exchangeratesapi.io/latest")
-      .then(response => (this.quotations = response))
+      .then(response => {
+        let i = 1;
+        const quotationsArray = []
+        for (let element in response.data.rates) {
+          let item = {
+            number: i,
+            name: element,
+            value: response.data.rates[element]
+          };
+          i++;
+          quotationsArray.push(item);
+        }
+        this.quotationsArray = quotationsArray;
+        this.baseCurrency = response.data.base;
+        this.date = response.data.date;
+      })
       .then(() => (this.loader = false));
   }
 };
