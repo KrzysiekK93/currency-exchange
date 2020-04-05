@@ -6,9 +6,15 @@
       <h3>Base currency: {{ baseCurrency }}</h3>
     </div>
     <div class="text-center" v-if="this.loader === true">
-        <b-spinner variant="success" label="Spinning"></b-spinner>
+      <b-spinner variant="success" label="Spinning"></b-spinner>
     </div>
-    <b-table  v-if="this.loader === false" sticky-header striped hover :items="quotationsArray"></b-table>
+    <b-table
+      v-if="this.loader === false"
+      sticky-header
+      striped
+      hover
+      :items="quotationsArray"
+    ></b-table>
   </div>
 </template>
 
@@ -20,7 +26,7 @@ export default {
     date: String,
     baseCurrency: String,
     loader: Boolean
-  },
+  }
 };
 </script>
 
