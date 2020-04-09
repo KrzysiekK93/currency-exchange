@@ -1,7 +1,13 @@
 <template>
   <div id="app">
     <Header />
-    <router-view />
+    <b-container class="bv-example-row">
+      <b-row>
+        <b-col>
+          <router-view />
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 

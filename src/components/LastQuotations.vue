@@ -31,7 +31,7 @@ export default {
       .get("https://api.exchangeratesapi.io/latest")
       .then(response => {
         let i = 1;
-        const quotationsArray = []
+        const quotationsArray = [];
         for (let element in response.data.rates) {
           let item = {
             number: i,
