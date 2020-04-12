@@ -1,23 +1,28 @@
 <template>
   <div id="app">
     <Header />
-    <b-container class="bv-example-row">
-      <b-row>
-        <b-col>
-          <router-view />
-        </b-col>
-      </b-row>
-    </b-container>
+    <main>
+      <b-container class="bv-example-row">
+        <b-row>
+          <b-col>
+            <router-view />
+          </b-col>
+        </b-row>
+      </b-container>
+    </main>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from "./components/shared/Header.vue";
+import Footer from "./components/shared/Footer.vue";
 
 export default {
   name: "App",
   components: {
-    Header
+    Header,
+    Footer
   }
 };
 </script>

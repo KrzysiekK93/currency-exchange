@@ -1,31 +1,33 @@
 <template>
-  <b-navbar toggleable="lg" type="dark" variant="success">
-    <b-navbar-brand href="#">Cantor</b-navbar-brand>
+  <header>
+    <b-navbar toggleable="lg" type="dark" variant="success">
+      <b-navbar-brand href="#">Cantor</b-navbar-brand>
 
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-    <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav>
-        <router-link class="nav-link" to="/">Home</router-link>
-        <router-link class="nav-link" to="/about">About</router-link>
-        <router-link class="nav-link" v-if="user.loggedIn" to="/dashboard"
-          >Dashobard</router-link
-        >
-      </b-navbar-nav>
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <router-link class="nav-link" to="/">Home</router-link>
+          <router-link class="nav-link" to="/about">About</router-link>
+          <router-link class="nav-link" v-if="user.loggedIn" to="/dashboard"
+            >Dashobard</router-link
+          >
+        </b-navbar-nav>
 
-      <!-- Right aligned nav items -->
-      <b-navbar-nav class="ml-auto nav-fn">
-        <template v-if="user.loggedIn" right>
-          <div class="nav-item user-name">{{ user.data.displayName }}</div>
-          <a class="nav-link" @click.prevent="signOut">Sign out</a>
-        </template>
-        <template v-else>
-          <router-link to="login" class="nav-link">Login</router-link>
-          <router-link to="register" class="nav-link">Register</router-link>
-        </template>
-      </b-navbar-nav>
-    </b-collapse>
-  </b-navbar>
+        <!-- Right aligned nav items -->
+        <b-navbar-nav class="ml-auto nav-fn">
+          <template v-if="user.loggedIn" right>
+            <div class="nav-item user-name">{{ user.data.displayName }}</div>
+            <a class="nav-link" @click.prevent="signOut">Sign out</a>
+          </template>
+          <template v-else>
+            <router-link to="login" class="nav-link">Login</router-link>
+            <router-link to="register" class="nav-link">Register</router-link>
+          </template>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+  </header>
 </template>
 
 <script>
