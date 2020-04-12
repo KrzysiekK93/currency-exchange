@@ -3,7 +3,16 @@
     <b-navbar toggleable="lg" type="dark" variant="success">
       <b-navbar-brand href="#">Cantor</b-navbar-brand>
 
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-navbar-toggle target="nav-collapse" class="custom">
+        <div id="nav-icon" v-on:click="open = !open" :class="{ open: open }">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
@@ -34,6 +43,11 @@
 import { mapGetters } from "vuex";
 import firebase from "firebase";
 export default {
+  data: function() {
+    return {
+      open: false
+    };
+  },
   computed: {
     // map `this.user` to `this.$store.getters.user`
     ...mapGetters({
@@ -51,6 +65,11 @@ export default {
           });
         });
     }
+  },
+  watch: {
+    $route() {
+      this.open = false;
+    }
   }
 };
 </script>
@@ -63,6 +82,10 @@ export default {
   }
   .nav-link {
     cursor: pointer;
+    &.router-link-exact-active {
+      color: white !important;
+      text-decoration: underline;
+    }
   }
   .navbar-nav {
     .user-name {
@@ -82,6 +105,97 @@ export default {
       &:last-of-type {
         margin-right: 0;
       }
+    }
+  }
+}
+
+.navbar-toggler.custom {
+  border: none;
+  padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+#nav-icon {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+  span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 50%;
+    background: white;
+    opacity: 1;
+    transform: rotate(0deg);
+    transition: 0.25s ease-in-out;
+    &:nth-child(even) {
+      left: 50%;
+      border-radius: 0 9px 9px 0;
+    }
+    &:nth-child(odd) {
+      left: 0;
+      border-radius: 9px 0 0 9px;
+    }
+    &:nth-child(1),
+    &:nth-child(2) {
+      top: 6px;
+    }
+    &:nth-child(3),
+    &:nth-child(4) {
+      top: 18px;
+    }
+
+    &:nth-child(5),
+    &:nth-child(6) {
+      top: 30px;
+    }
+  }
+
+  &.open span {
+    &:nth-child(1),
+    &:nth-child(6) {
+      transform: rotate(45deg);
+    }
+
+    &:nth-child(2),
+    &:nth-child(5) {
+      transform: rotate(-45deg);
+    }
+
+    &:nth-child(1) {
+      left: 3px;
+      top: 10px;
+    }
+
+    &:nth-child(2) {
+      left: calc(50% - 3px);
+      top: 10px;
+    }
+
+    &:nth-child(3) {
+      left: -50%;
+      opacity: 0;
+    }
+
+    &:nth-child(4) {
+      left: 100%;
+      opacity: 0;
+    }
+
+    &:nth-child(5) {
+      left: 3px;
+      top: 24px;
+    }
+
+    &:nth-child(6) {
+      left: calc(50% - 3px);
+      top: 24px;
     }
   }
 }
