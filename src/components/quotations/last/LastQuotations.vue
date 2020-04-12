@@ -11,7 +11,7 @@
 
 <script>
 import axios from "axios";
-import LastQuotationsTable from "@/components/LastQuotationsTable.vue";
+import LastQuotationsTable from "./LastQuotationsTable.vue";
 
 export default {
   name: "quotations",

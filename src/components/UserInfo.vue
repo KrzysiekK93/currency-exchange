@@ -6,8 +6,8 @@
           <div class="card-header">User Profile</div>
           <div class="card-body">
             <div class="hero-unit">
-                <h1>{{ user.data.displayName }}</h1>
-                <p>{{ user.data.email }}</p>
+              <h1>{{ user.data.displayName }}</h1>
+              <p>{{ user.data.email }}</p>
             </div>
           </div>
         </div>
