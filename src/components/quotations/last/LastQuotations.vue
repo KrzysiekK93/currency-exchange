@@ -12,6 +12,7 @@
 <script>
 import axios from "axios";
 import LastQuotationsTable from "./LastQuotationsTable.vue";
+import store from "../../../store"
 
 export default {
   name: "quotations",
@@ -44,6 +45,8 @@ export default {
         this.quotationsArray = quotationsArray;
         this.baseCurrency = response.data.base;
         this.date = response.data.date;
+        store.dispatch("fetchData", quotationsArray);
+        console.log(quotationsArray);
       })
       .then(() => (this.loader = false));
   }

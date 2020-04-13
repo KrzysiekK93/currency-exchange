@@ -7,11 +7,15 @@ export default new Vuex.Store({
     user: {
       loggedIn: false,
       data: null
-    }
+    },
+    currencyRates: []
   },
   getters: {
     user(state) {
       return state.user;
+    },
+    rates(state) {
+      return state.currencyRates;
     }
   },
   mutations: {
@@ -20,6 +24,9 @@ export default new Vuex.Store({
     },
     SET_USER(state, data) {
       state.user.data = data;
+    },
+    SET_RATES(state, data) {
+      state.currencyRates = data;
     }
   },
   actions: {
@@ -33,6 +40,9 @@ export default new Vuex.Store({
       } else {
         commit("SET_USER", null);
       }
+    },
+    fetchData({ commit }, rates){
+      commit("SET_RATES", rates)
     }
   },
   modules: {}
