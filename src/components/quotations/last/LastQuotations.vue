@@ -46,7 +46,6 @@ export default {
         this.baseCurrency = response.data.base;
         this.date = response.data.date;
         store.dispatch("fetchData", quotationsArray);
-        console.log(quotationsArray);
       })
       .then(() => (this.loader = false));
   }
