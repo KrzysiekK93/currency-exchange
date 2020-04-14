@@ -8,7 +8,8 @@ export default new Vuex.Store({
       loggedIn: false,
       data: null
     },
-    currencyRates: []
+    currencyRates: [],
+    wallet: 500
   },
   getters: {
     user(state) {
@@ -16,6 +17,9 @@ export default new Vuex.Store({
     },
     rates(state) {
       return state.currencyRates;
+    },
+    wallet(state) {
+      return state.wallet;
     }
   },
   mutations: {
