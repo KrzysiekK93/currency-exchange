@@ -19,8 +19,11 @@
     </div>
     <div class="charsWrapper">
       <Char v-if="results.length > 0" :results="results" />
-      <div class="defaultChart" v-if="this.selected === null">
-        Please select value
+      <div class="defaultChart" v-if="!this.isLoaded">
+        <span v-if="this.selected === null">Please select value</span>
+        <div class="text-center" v-if="this.selected !== null">
+          <b-spinner variant="success" label="Spinning"></b-spinner>
+        </div>
       </div>
     </div>
   </div>
@@ -39,6 +42,7 @@ export default {
   data: function() {
     return {
       selected: null,
+      isLoaded: false,
       selectOptions: [
         { value: "usd", text: "USD/PLN" },
         { value: "chf", text: "CHF/PLN" },
@@ -88,6 +92,7 @@ export default {
         )
         .then(response => {
           this.results = response.data.rates;
+          this.isLoaded = true;
         })
         .catch(error => {
           console.log(error);

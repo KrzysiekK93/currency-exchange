@@ -1,5 +1,9 @@
 <template>
-  <div id="chart"></div>
+  <b-container fluid="md">
+    <b-row class="justify-content-md-center">
+      <b-col md="12" lg="8"><div id="chart"></div></b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
@@ -62,9 +66,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-.content {
-  margin-bottom: 24px;
-}
-</style>
