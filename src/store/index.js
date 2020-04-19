@@ -9,7 +9,7 @@ export default new Vuex.Store({
       data: null
     },
     currencyRates: [],
-    wallet: 500.00
+    wallet: 500.0
   },
   getters: {
     user(state) {
@@ -48,11 +48,11 @@ export default new Vuex.Store({
         commit("SET_USER", null);
       }
     },
-    fetchData({ commit }, rates){
-      commit("SET_RATES", rates)
+    fetchData({ commit }, rates) {
+      commit("SET_RATES", rates);
     },
-    fetchWallet({ commit }, data){
-      commit("SET_WALLET", data)
+    fetchWallet({ commit }, data) {
+      commit("SET_WALLET", data);
     }
   },
   modules: {}
