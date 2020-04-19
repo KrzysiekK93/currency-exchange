@@ -95,9 +95,27 @@ export default {
   },
   methods: {
     submit() {
+      const email = this.form.email;
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.form.email, this.form.password)
+        .then(
+          firebase
+            .firestore()
+            .collection("users")
+            .doc("Template")
+            .get()
+            .then(function(doc) {
+              if (doc && doc.exists) {
+                var data = doc.data();
+                firebase
+                  .firestore()
+                  .collection("users")
+                  .doc(email)
+                  .set(data);
+              }
+            })
+        )
         .then(data => {
           data.user
             .updateProfile({
@@ -107,6 +125,15 @@ export default {
               this.$router.replace({ name: "Dashboard" });
             });
         })
+        .then(
+          setTimeout(() => {
+            firebase
+              .firestore()
+              .collection("users")
+              .doc(email)
+              .update({ Username: email })
+            }, 5000)
+        )
         .catch(err => {
           this.error = err.message;
         });

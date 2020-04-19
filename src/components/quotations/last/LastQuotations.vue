@@ -12,7 +12,7 @@
 <script>
 import axios from "axios";
 import LastQuotationsTable from "./LastQuotationsTable.vue";
-import store from "../../../store"
+import store from "../../../store";
 
 export default {
   name: "quotations",
