@@ -102,7 +102,7 @@ export default {
       var isValid = true;
       var errorMessage = "";
 
-      if (amount === null || target === "...") {
+      if (amount === null || isNaN(amount) || target === "...") {
         if (shouldShowAlert) {
           window.alert("Inapropriate values entered!");
         }
