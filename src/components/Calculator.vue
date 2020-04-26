@@ -65,7 +65,8 @@ export default {
     // map `this.user` to `this.$store.getters.user`
     ...mapGetters({
       rates: "rates",
-      wallet: "wallet"
+      wallet: "wallet",
+      user: "user"
     })
   },
   data() {
@@ -88,10 +89,13 @@ export default {
       this.updateBase();
     },
     CalculateAndUpdateCalc(amount, target) {
+      debugger;
       var rate = this.rates.find(el => el.name === target).value;
       var targetAmount = (amount * rate).toFixed(2);
-      var newWallet = (this.wallet - amount).toFixed(2);
-      store.dispatch("fetchWallet", newWallet);
+      this.wallet["EUR"] = (this.wallet["EUR"] - amount).toFixed(2);
+      this.wallet[target] = targetAmount;
+      console.log(this.wallet);
+      store.dispatch("fetchWallet", this.wallet);
       this.UpdateCalc(targetAmount, target);
     },
     UpdateCalc(amount, target) {
@@ -140,13 +144,12 @@ export default {
       div.innerHTML = `You would get ${proposal} ${target}`;
     },
     updateBase() {
-      const target = this.form.target;
-      const amount = parseFloat(this.form.amount);
+      const email = this.email.data.email;
       firebase
         .firestore()
         .collection("users")
-        .doc("test111@wp.pl") // pobrać email Krzysiek
-        .update({ [target]: amount }); //pobieranie wartości Mikołaj
+        .doc(email)
+        .update(this.wallet);
     }
   }
 };

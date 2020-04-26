@@ -130,7 +130,7 @@ export default {
             .firestore()
             .collection("users")
             .doc(email)
-            .set({ Username: email })
+            .update({ Username: email })
             .catch(function(error) {
               this.error = error.message;
             });
