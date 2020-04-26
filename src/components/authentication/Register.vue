@@ -131,8 +131,8 @@ export default {
               .firestore()
               .collection("users")
               .doc(email)
-              .update({ Username: email })
-            }, 5000)
+              .update({ Username: email });
+          }, 5000)
         )
         .catch(err => {
           this.error = err.message;

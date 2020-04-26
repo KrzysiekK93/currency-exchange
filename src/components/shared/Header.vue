@@ -17,7 +17,9 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <router-link class="nav-link" to="/">Home</router-link>
-          <router-link class="nav-link" to="/about">About</router-link>
+          <router-link class="nav-link" v-if="user.loggedIn" to="/account"
+            >Account</router-link
+          >
           <router-link class="nav-link" v-if="user.loggedIn" to="/dashboard"
             >Dashobard</router-link
           >
