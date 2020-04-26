@@ -5,11 +5,7 @@
       <h3>Date: {{ date }}</h3>
       <h3>Base currency: {{ baseCurrency }}</h3>
     </div>
-    <div class="text-center" v-if="this.loader === true">
-      <b-spinner variant="success" label="Spinning"></b-spinner>
-    </div>
     <b-table
-      v-if="this.loader === false"
       sticky-header
       striped
       hover
@@ -25,7 +21,6 @@ export default {
     quotationsArray: Array,
     date: String,
     baseCurrency: String,
-    loader: Boolean
   }
 };
 </script>
