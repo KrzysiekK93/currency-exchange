@@ -9,6 +9,14 @@
               You are logged in! <br />
               You have {{ wallet["EUR"] }} EUR in your wallet.
             </div>
+            <div class="rest-currency">
+              <h4>Rest currency in wallet:</h4>
+              <div v-for="(value, name) in wallet" v-bind:key="value">
+                <span v-if="value !== user.data.email">
+                {{ name }}: <span class="value">{{ value }}</span>
+                </span>
+              </div>
+            </div>
             <div class="calculator">
               <Calculator />
             </div>
@@ -58,3 +66,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.rest-currency {
+  text-align: left;
+}
+</style>

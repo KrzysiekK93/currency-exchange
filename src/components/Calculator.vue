@@ -89,12 +89,10 @@ export default {
       this.updateBase();
     },
     CalculateAndUpdateCalc(amount, target) {
-      debugger;
       var rate = this.rates.find(el => el.name === target).value;
       var targetAmount = (amount * rate).toFixed(2);
       this.wallet["EUR"] = (this.wallet["EUR"] - amount).toFixed(2);
       this.wallet[target] = targetAmount;
-      console.log(this.wallet);
       store.dispatch("fetchWallet", this.wallet);
       this.UpdateCalc(targetAmount, target);
     },
