@@ -18,8 +18,8 @@ export default {
     LastQuotationsTable
   },
   computed: {
-    quotationsArray: function(){
-    return store.getters.rates;
+    quotationsArray: function() {
+      return store.getters.rates;
     },
     date: function() {
       return new Date().toISOString().slice(0, 10);

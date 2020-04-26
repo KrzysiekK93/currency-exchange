@@ -9,7 +9,7 @@ export default new Vuex.Store({
       data: null
     },
     currencyRates: [],
-    wallet: 500.0
+    wallet: null
   },
   getters: {
     user(state) {

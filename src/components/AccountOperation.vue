@@ -49,7 +49,8 @@ export default {
   computed: {
     // map `this.user` to `this.$store.getters.user`
     ...mapGetters({
-      user: "user"
+      user: "user",
+      wallet: "wallet"
     })
   },
   data() {
@@ -66,7 +67,9 @@ export default {
         .firestore()
         .collection("users")
         .doc(this.user.data.email)
-        .update({ EUR: `${this.form.amount}` });
+        .update({
+          EUR: parseFloat(this.wallet) + parseFloat(this.form.amount)
+        });
     }
   }
 };

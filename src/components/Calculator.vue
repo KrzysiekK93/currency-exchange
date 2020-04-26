@@ -58,13 +58,15 @@
 <script>
 import { mapGetters } from "vuex";
 import store from "../store";
+import firebase from "firebase";
 
 export default {
   computed: {
     // map `this.user` to `this.$store.getters.user`
     ...mapGetters({
       rates: "rates",
-      wallet: "wallet"
+      wallet: "wallet",
+      user: "user"
     })
   },
   data() {
@@ -84,12 +86,16 @@ export default {
         return;
       }
       this.CalculateAndUpdateCalc(amount, target);
+      this.updateBase();
     },
     CalculateAndUpdateCalc(amount, target) {
+      debugger;
       var rate = this.rates.find(el => el.name === target).value;
       var targetAmount = (amount * rate).toFixed(2);
-      var newWallet = (this.wallet - amount).toFixed(2);
-      store.dispatch("fetchWallet", newWallet);
+      this.wallet["EUR"] = (this.wallet["EUR"] - amount).toFixed(2);
+      this.wallet[target] = targetAmount;
+      console.log(this.wallet);
+      store.dispatch("fetchWallet", this.wallet);
       this.UpdateCalc(targetAmount, target);
     },
     UpdateCalc(amount, target) {
@@ -136,6 +142,14 @@ export default {
       var div = document.getElementById("exInfo");
       div.style.display = "block";
       div.innerHTML = `You would get ${proposal} ${target}`;
+    },
+    updateBase() {
+      const email = this.email.data.email;
+      firebase
+        .firestore()
+        .collection("users")
+        .doc(email)
+        .update(this.wallet);
     }
   }
 };

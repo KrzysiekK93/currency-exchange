@@ -125,15 +125,16 @@ export default {
               this.$router.replace({ name: "Dashboard" });
             });
         })
-        .then(
-          setTimeout(() => {
-            firebase
-              .firestore()
-              .collection("users")
-              .doc(email)
-              .update({ Username: email });
-          }, 5000)
-        )
+        .then(() => {
+          firebase
+            .firestore()
+            .collection("users")
+            .doc(email)
+            .update({ Username: email })
+            .catch(function(error) {
+              this.error = error.message;
+            });
+        })
         .catch(err => {
           this.error = err.message;
         });

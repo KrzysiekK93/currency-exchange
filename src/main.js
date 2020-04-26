@@ -14,22 +14,20 @@ firebase.auth().onAuthStateChanged(user => {
   store.dispatch("fetchUser", user);
 });
 
-axios
-  .get("https://api.exchangeratesapi.io/latest")
-  .then(response => {
-    let i = 1;
-    const quotationsArray = [];
-    for (let element in response.data.rates) {
-      let item = {
-        number: i,
-        name: element,
-        value: response.data.rates[element]
-      };
-      i++;
-      quotationsArray.push(item);
-    }
-    store.dispatch("fetchData", quotationsArray);
-  });
+axios.get("https://api.exchangeratesapi.io/latest").then(response => {
+  let i = 1;
+  const quotationsArray = [];
+  for (let element in response.data.rates) {
+    let item = {
+      number: i,
+      name: element,
+      value: response.data.rates[element]
+    };
+    i++;
+    quotationsArray.push(item);
+  }
+  store.dispatch("fetchData", quotationsArray);
+});
 
 new Vue({
   router,
