@@ -31,11 +31,11 @@ export default {
       wallet: "wallet"
     })
 
-/*
+    /*
 const document = firebase.firestore().collection("users").doc(email);
 integer wallet = (Integer) document.get("EUR");
 */
-//zamiast wallet Krzysiek
+    //zamiast wallet Krzysiek
   },
   name: "calculator",
   components: {

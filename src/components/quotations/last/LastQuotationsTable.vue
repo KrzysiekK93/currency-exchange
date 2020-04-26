@@ -5,12 +5,7 @@
       <h3>Date: {{ date }}</h3>
       <h3>Base currency: {{ baseCurrency }}</h3>
     </div>
-    <b-table
-      sticky-header
-      striped
-      hover
-      :items="quotationsArray"
-    ></b-table>
+    <b-table sticky-header striped hover :items="quotationsArray"></b-table>
   </div>
 </template>
 
@@ -20,7 +15,7 @@ export default {
   props: {
     quotationsArray: Array,
     date: String,
-    baseCurrency: String,
+    baseCurrency: String
   }
 };
 </script>
