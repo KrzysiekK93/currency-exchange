@@ -58,6 +58,7 @@
 <script>
 import { mapGetters } from "vuex";
 import store from "../store";
+import firebase from "firebase";
 
 export default {
   computed: {
@@ -84,6 +85,7 @@ export default {
         return;
       }
       this.CalculateAndUpdateCalc(amount, target);
+      this.updateBase();
     },
     CalculateAndUpdateCalc(amount, target) {
       var rate = this.rates.find(el => el.name === target).value;
@@ -136,6 +138,15 @@ export default {
       var div = document.getElementById("exInfo");
       div.style.display = "block";
       div.innerHTML = `You would get ${proposal} ${target}`;
+    },
+    updateBase() {
+      const target = this.form.target;
+      const amount = parseFloat(this.form.amount);
+      firebase
+        .firestore()
+        .collection("users")
+        .doc("test111@wp.pl") // pobrać email Krzysiek
+        .update({ [target]: amount }); //pobieranie wartości Mikołaj
     }
   }
 };

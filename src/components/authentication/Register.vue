@@ -96,6 +96,7 @@ export default {
   methods: {
     submit() {
       const email = this.form.email;
+      const functions = require("firebase-functions");
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.form.email, this.form.password)
@@ -126,13 +127,18 @@ export default {
             });
         })
         .then(
-          setTimeout(() => {
-            firebase
-              .firestore()
-              .collection("users")
-              .doc(email)
-              .update({ Username: email });
-          }, 5000)
+          function trigger() {
+            exports.myfunction = functions.firestore
+              .document("users/{email}").onWrite(() => {
+                firebase
+                  .firestore()
+                  .collection("users")
+                  .doc(email)
+                  .update({ Username: email });
+                }
+              
+              )
+          }
         )
         .catch(err => {
           this.error = err.message;

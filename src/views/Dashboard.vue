@@ -30,6 +30,12 @@ export default {
       rates: "rates",
       wallet: "wallet"
     })
+
+/*
+const document = firebase.firestore().collection("users").doc(email);
+integer wallet = (Integer) document.get("EUR");
+*/
+//zamiast wallet Krzysiek
   },
   name: "calculator",
   components: {
