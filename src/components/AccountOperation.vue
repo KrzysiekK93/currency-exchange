@@ -68,7 +68,7 @@ export default {
         .collection("users")
         .doc(this.user.data.email)
         .update({
-          EUR: parseFloat(this.wallet) + parseFloat(this.form.amount)
+          EUR: parseFloat(this.wallet["EUR"]) + parseFloat(this.form.amount)
         });
     }
   }

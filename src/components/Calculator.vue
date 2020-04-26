@@ -79,8 +79,8 @@ export default {
   },
   methods: {
     exchange() {
-      var target = this.form.target;
-      var amount = parseFloat(this.form.amount);
+      let target = this.form.target;
+      let amount = parseFloat(this.form.amount);
 
       if (!this.ValidateInput(amount, target, true)) {
         return;
@@ -89,22 +89,22 @@ export default {
       this.updateBase();
     },
     CalculateAndUpdateCalc(amount, target) {
-      var rate = this.rates.find(el => el.name === target).value;
-      var targetAmount = (amount * rate).toFixed(2);
-      this.wallet["EUR"] = (this.wallet["EUR"] - amount).toFixed(2);
-      this.wallet[target] = targetAmount;
+      let rate = this.rates.find(el => el.name === target).value;
+      let targetAmount = (amount * rate).toFixed(2);
+      this.wallet["EUR"] = parseFloat((this.wallet["EUR"] - amount).toFixed(2));
+      this.wallet[target] = parseFloat(targetAmount);
       store.dispatch("fetchWallet", this.wallet);
-      this.UpdateCalc(targetAmount, target);
+      this.UpdateCalc(parseFloat(targetAmount), parseFloat(target));
     },
     UpdateCalc(amount, target) {
       //show successfull exchange info
-      var div = document.getElementById("exInfo");
+      let div = document.getElementById("exInfo");
       div.style.display = "block";
       div.innerHTML = `You have ${amount} ${target}`;
     },
     ValidateInput(amount, target, shouldShowAlert) {
-      var isValid = true;
-      var errorMessage = "";
+      let isValid = true;
+      let errorMessage = "";
 
       if (amount === null || isNaN(amount) || target === "...") {
         if (shouldShowAlert) {
@@ -112,7 +112,7 @@ export default {
         }
         return false;
       }
-      if (amount > this.wallet) {
+      if (amount > this.wallet["EUR"]) {
         isValid = false;
         errorMessage = "Not enough money in the wallet.\n";
       }
@@ -127,22 +127,22 @@ export default {
       return isValid;
     },
     calculateProp() {
-      var target = this.form.target;
-      var amount = parseFloat(this.form.amount);
+      let target = this.form.target;
+      let amount = parseFloat(this.form.amount);
 
       if (!this.ValidateInput(amount, target, false)) {
         return;
       }
 
-      var rate = this.rates.find(el => el.name === target).value;
-      var proposal = (amount * rate).toFixed(2);
+      let rate = this.rates.find(el => el.name === target).value;
+      let proposal = (amount * rate).toFixed(2);
 
-      var div = document.getElementById("exInfo");
+      let div = document.getElementById("exInfo");
       div.style.display = "block";
       div.innerHTML = `You would get ${proposal} ${target}`;
     },
     updateBase() {
-      const email = this.email.data.email;
+      const email = this.user.data.email;
       firebase
         .firestore()
         .collection("users")
