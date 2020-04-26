@@ -31,6 +31,19 @@ export default {
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/bootstrap-vue/src/index.scss";
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 90px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
