@@ -81,6 +81,7 @@
 
 <script>
 import firebase from "firebase";
+import store from "../../store";
 
 export default {
   data() {
@@ -120,6 +121,9 @@ export default {
           data.user
             .updateProfile({
               displayName: this.form.name
+            })
+            .then(() => {
+              store.dispatch("fetchUser", data.user);
             })
             .then(() => {
               this.$router.replace({ name: "Dashboard" });
