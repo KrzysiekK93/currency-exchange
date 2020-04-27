@@ -95,7 +95,7 @@ export default {
           this.isLoaded = true;
         })
         .catch(error => {
-          console.log(error);
+          return error;
         });
     }
   },
@@ -105,7 +105,6 @@ export default {
       historicalQuotationsData: "historicalQuotationsData"
     }),
     processData() {
-      debugger;
       let rates = this.results;
       let newOptions = this.options;
 
