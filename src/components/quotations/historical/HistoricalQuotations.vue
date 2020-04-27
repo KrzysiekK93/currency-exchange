@@ -88,7 +88,7 @@ export default {
       }
       axios
         .get(
-          `http://api.nbp.pl/api/exchangerates/rates/a/${value}/${pastDate}/${currentDate}/`
+          `https://api.nbp.pl/api/exchangerates/rates/a/${value}/${pastDate}/${currentDate}/`
         )
         .then(response => {
           this.results = response.data.rates;
