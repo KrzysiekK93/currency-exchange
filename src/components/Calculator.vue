@@ -90,11 +90,12 @@ export default {
     },
     CalculateAndUpdateCalc(amount, target) {
       let rate = this.rates.find(el => el.name === target).value;
-      let targetAmount = (amount * rate).toFixed(2);
+      let targetAmount = parseFloat((amount * rate).toFixed(2));
       this.wallet["EUR"] = parseFloat((this.wallet["EUR"] - amount).toFixed(2));
-      this.wallet[target] = parseFloat(targetAmount);
+      this.wallet[target] = parseFloat((this.wallet[target] + targetAmount).toFixed(2));
       store.dispatch("fetchWallet", this.wallet);
-      this.UpdateCalc(parseFloat(targetAmount), parseFloat(target));
+      this.UpdateCalc(targetAmount, target);
+      console.log("asd");
     },
     UpdateCalc(amount, target) {
       //show successfull exchange info
