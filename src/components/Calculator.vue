@@ -97,7 +97,6 @@ export default {
       );
       store.dispatch("fetchWallet", this.wallet);
       this.UpdateCalc(targetAmount, target);
-      console.log("asd");
     },
     UpdateCalc(amount, target) {
       //show successfull exchange info
