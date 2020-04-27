@@ -12,8 +12,12 @@
             <div class="rest-currency">
               <h4>Rest currency in wallet:</h4>
               <div v-for="(value, name) in wallet" v-bind:key="name">
-                <span v-if="value !== user.data.email && value !== 0 && name !== 'EUR'">
-                {{ name }}: <span class="value">{{ value }}</span>
+                <span
+                  v-if="
+                    value !== user.data.email && value !== 0 && name !== 'EUR'
+                  "
+                >
+                  {{ name }}: <span class="value">{{ value }}</span>
                 </span>
               </div>
             </div>
