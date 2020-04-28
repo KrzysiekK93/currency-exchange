@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Dashboard from "../views/Dashboard.vue";
-import Documents from "../views/Documents.vue";
+import Documentation from "../views/Documentation.vue";
 import Login from "../components/authentication/Login.vue";
 import Register from "../components/authentication/Register.vue";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
@@ -36,9 +36,9 @@ const routes = [
     component: Dashboard
   },
   {
-    path: "/Documents",
-    name: "Documents",
-    component: Documents
+    path: "/Documentation",
+    name: "Documentation",
+    component: Documentation
   },
   {
     path: "/account",

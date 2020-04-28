@@ -23,7 +23,7 @@
           <router-link class="nav-link" v-if="user.loggedIn" to="/dashboard"
             >Dashobard</router-link
           >
-          <router-link class="nav-link" to="/Documents">Documents</router-link>
+          <router-link class="nav-link" to="/Documentation">Documentation</router-link>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->

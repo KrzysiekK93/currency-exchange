@@ -17,7 +17,7 @@ import Goals from "@/components/documentation/Goals.vue";
 import Pictures from "@/components/documentation/Pictures.vue";
 
 export default {
-  name: "Documents",
+  name: "Documentation",
   components: {
     Topic,
     Goals,

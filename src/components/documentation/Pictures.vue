@@ -7,35 +7,46 @@
       <b-collapse id="show-pics" visible role="tabpanel">
         <b-card-body>
           <b-card-text>
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-              </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(115).jpg" alt="0">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(108).jpg" alt="1">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(105).jpg" alt="2">
-                </div>
-              </div>
-              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-            </div>
+            <b-carousel
+              id="carousel-1"
+              v-model="slide"
+              :interval="4000"
+              controls
+              indicators
+              background="#ababab"
+              style="text-shadow: 1px 1px 2px #333;"
+              @sliding-start="onSlideStart"
+              @sliding-end="onSlideEnd">
+              <!-- Text slides with image -->
+              <b-carousel-slide img-src="https://i.ibb.co/QD6yd1Y/ss1.png"/>
+              <b-carousel-slide img-src="https://i.ibb.co/XJjVYV6/ss2.png" />
+              <b-carousel-slide img-src="https://i.ibb.co/vH0wWQv/ss3.png" />
+              <b-carousel-slide img-src="https://i.ibb.co/R4L54vw/ss4.png" />
+              <b-carousel-slide img-src="https://i.ibb.co/sF3sH9d/ss5.png" />
+              <b-carousel-slide img-src="https://i.ibb.co/HNMZCbZ/ss6.png" />
+            </b-carousel>
           </b-card-text>
         </b-card-body>
       </b-collapse>
     </b-card>
   </div>
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        slide: 0,
+        sliding: null
+      }
+    },
+    methods: {
+      onSlideStart() {
+        this.sliding = true
+      },
+      onSlideEnd() {
+        this.sliding = false
+      }
+    }
+  }
+</script>
