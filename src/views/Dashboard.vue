@@ -10,7 +10,7 @@
               You have {{ wallet["EUR"] }} EUR in your wallet.
             </div>
             <div class="rest-currency">
-              <h4>Rest currency in wallet:</h4>
+              <h4>Otther currencies in your wallet:</h4>
               <div v-for="(value, name) in wallet" v-bind:key="name">
                 <span
                   v-if="
