@@ -91,7 +91,9 @@ export default {
       if (this.wallet["EUR"]) {
         let rate = this.rates.find(el => el.name === target).value;
         let targetAmount = parseFloat((amount * rate).toFixed(2));
-        this.wallet["EUR"] = parseFloat((this.wallet["EUR"] - amount).toFixed(2));
+        this.wallet["EUR"] = parseFloat(
+          (this.wallet["EUR"] - amount).toFixed(2)
+        );
         this.wallet[target] = parseFloat(
           (this.wallet[target] + targetAmount).toFixed(2)
         );
