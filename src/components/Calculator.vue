@@ -3,7 +3,6 @@
   padding-top: 20px;
 }
 </style>
-
 <template>
   <div id="calc">
     <form id="exForm" onsubmit="return false" class="centered">
@@ -89,14 +88,16 @@ export default {
       this.updateBase();
     },
     CalculateAndUpdateCalc(amount, target) {
-      let rate = this.rates.find(el => el.name === target).value;
-      let targetAmount = parseFloat((amount * rate).toFixed(2));
-      this.wallet["EUR"] = parseFloat((this.wallet["EUR"] - amount).toFixed(2));
-      this.wallet[target] = parseFloat(
-        (this.wallet[target] + targetAmount).toFixed(2)
-      );
-      store.dispatch("fetchWallet", this.wallet);
-      this.UpdateCalc(targetAmount, target);
+      if (this.wallet["EUR"]) {
+        let rate = this.rates.find(el => el.name === target).value;
+        let targetAmount = parseFloat((amount * rate).toFixed(2));
+        this.wallet["EUR"] = parseFloat((this.wallet["EUR"] - amount).toFixed(2));
+        this.wallet[target] = parseFloat(
+          (this.wallet[target] + targetAmount).toFixed(2)
+        );
+        store.dispatch("fetchWallet", this.wallet);
+        this.UpdateCalc(targetAmount, target);
+      }
     },
     UpdateCalc(amount, target) {
       //show successfull exchange info
@@ -114,7 +115,7 @@ export default {
         }
         return false;
       }
-      if (amount > this.wallet["EUR"]) {
+      if (this.wallet["EUR"] && amount > this.wallet["EUR"]) {
         isValid = false;
         errorMessage = "Not enough money in the wallet.\n";
       }
