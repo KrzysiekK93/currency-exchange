@@ -74,5 +74,17 @@ export default {
 <style scoped>
 .rest-currency {
   text-align: left;
+  margin-bottom: 1rem;
+}
+
+.rest-currency div {
+  font-size: 1.125rem;
+}
+
+.rest-currency .value {
+  text-decoration: underline;
+  color: #333;
+  font-size: 1rem;
+  margin-left: 0.5rem;
 }
 </style>
