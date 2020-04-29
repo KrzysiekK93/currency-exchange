@@ -16,14 +16,27 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <router-link class="nav-link" to="/">Home</router-link>
-          <router-link class="nav-link" v-if="user.loggedIn" to="/account"
+          <router-link class="nav-link" v-on:click.native="handleClick()" to="/"
+            >Home</router-link
+          >
+          <router-link
+            class="nav-link"
+            v-on:click.native="handleClick()"
+            v-if="user.loggedIn"
+            to="/account"
             >Account</router-link
           >
-          <router-link class="nav-link" v-if="user.loggedIn" to="/dashboard"
+          <router-link
+            class="nav-link"
+            v-on:click.native="handleClick()"
+            v-if="user.loggedIn"
+            to="/dashboard"
             >Dashobard</router-link
           >
-          <router-link class="nav-link" to="/Documentation"
+          <router-link
+            class="nav-link"
+            v-on:click.native="handleClick()"
+            to="/Documentation"
             >Documentation</router-link
           >
         </b-navbar-nav>
@@ -32,11 +45,26 @@
         <b-navbar-nav class="ml-auto nav-fn">
           <template v-if="user.loggedIn" right>
             <div class="nav-item user-name">{{ user.data.displayName }}</div>
-            <a class="nav-link" @click.prevent="signOut">Sign out</a>
+            <a
+              class="nav-link"
+              v-on:click.native="handleClick()"
+              @click.prevent="signOut"
+              >Sign out</a
+            >
           </template>
           <template v-else>
-            <router-link to="login" class="nav-link">Login</router-link>
-            <router-link to="register" class="nav-link">Register</router-link>
+            <router-link
+              to="login"
+              v-on:click.native="handleClick()"
+              class="nav-link"
+              >Login</router-link
+            >
+            <router-link
+              to="register"
+              v-on:click.native="handleClick()"
+              class="nav-link"
+              >Register</router-link
+            >
           </template>
         </b-navbar-nav>
       </b-collapse>
@@ -69,6 +97,9 @@ export default {
             name: "home"
           });
         });
+    },
+    handleClick() {
+      this.open = false;
     }
   },
   watch: {
