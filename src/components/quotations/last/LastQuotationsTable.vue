@@ -24,4 +24,8 @@ export default {
 .content {
   margin-bottom: 24px;
 }
+
+.b-table-sticky-header > .table.b-table > thead > tr > th {
+  top: -2px;
+}
 </style>
