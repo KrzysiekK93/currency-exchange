@@ -19,12 +19,12 @@
               @sliding-start="onSlideStart"
               @sliding-end="onSlideEnd"
             >
-              <b-carousel-slide img-src="https://i.ibb.co/QD6yd1Y/ss1.png" />
-              <b-carousel-slide img-src="https://i.ibb.co/XJjVYV6/ss2.png" />
-              <b-carousel-slide img-src="https://i.ibb.co/vH0wWQv/ss3.png" />
-              <b-carousel-slide img-src="https://i.ibb.co/R4L54vw/ss4.png" />
-              <b-carousel-slide img-src="https://i.ibb.co/sF3sH9d/ss5.png" />
-              <b-carousel-slide img-src="https://i.ibb.co/HNMZCbZ/ss6.png" />
+              <b-carousel-slide img-src="https://i.ibb.co/x5wfQ4N/ss1.png" />
+              <b-carousel-slide img-src="https://i.ibb.co/16bj92F/ss2.png" />
+              <b-carousel-slide img-src="https://i.ibb.co/0rZZqsD/ss3.png" />
+              <b-carousel-slide img-src="https://i.ibb.co/rGp32tS/ss4.png" />
+              <b-carousel-slide img-src="https://i.ibb.co/PW9HX5T/ss5.png" />
+              <b-carousel-slide img-src="https://i.ibb.co/whSx32v/ss6.png" />
             </b-carousel>
           </b-card-text>
         </b-card-body>
@@ -78,6 +78,6 @@ export default {
 }
 
 .carousel-indicators li {
-  background-color: #28a745;
+  background-color: #156beb;
 }
 </style>
