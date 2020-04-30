@@ -10,7 +10,7 @@
               You have {{ wallet["EUR"] }} EUR in your wallet.
             </div>
             <div class="rest-currency">
-              <h4>Otther currencies in your wallet:</h4>
+              <h4 v-if="this.hasChildren">Otther currencies in your wallet:</h4>
               <div v-for="(value, name) in wallet" v-bind:key="name">
                 <span
                   v-if="
@@ -22,7 +22,7 @@
               </div>
             </div>
             <div class="calculator">
-              <Calculator />
+              <Calculator :btnClickHandler="this.handleHasChildren" />
             </div>
           </div>
         </div>
@@ -45,6 +45,12 @@ export default {
       wallet: "wallet"
     })
   },
+  data() {
+    return {
+      hasChildren: false,
+      currency: []
+    };
+  },
   name: "calculator",
   components: {
     Calculator
@@ -56,6 +62,22 @@ export default {
         .collection("users")
         .get();
       return snapshot.docs.map(doc => doc.data());
+    },
+    handleHasChildren() {
+      for (const item in this.wallet) {
+        if (
+          this.wallet[item] !== this.user.data.email &&
+          this.wallet[item] == 0 &&
+          name !== "EUR"
+        ) {
+          this.currency.push(item);
+        }
+      }
+      if (this.currency.length === 32 || this.currency.length === 0) {
+        this.hasChildren = false;
+      } else {
+        this.hasChildren = true;
+      }
     }
   },
   mounted() {
@@ -67,6 +89,7 @@ export default {
         }
       });
     });
+    this.handleHasChildren();
   }
 };
 </script>

@@ -60,6 +60,11 @@ import store from "../store";
 import firebase from "firebase";
 
 export default {
+  props: {
+    btnClickHandler: {
+      type: Function
+    }
+  },
   computed: {
     // map `this.user` to `this.$store.getters.user`
     ...mapGetters({
@@ -86,6 +91,7 @@ export default {
       }
       this.CalculateAndUpdateCalc(amount, target);
       this.updateBase();
+      this.btnClickHandler();
     },
     CalculateAndUpdateCalc(amount, target) {
       if (this.wallet["EUR"]) {
