@@ -6,7 +6,7 @@
           >Zrzuty ekranu</b-button
         >
       </b-card-header>
-      <b-collapse id="show-pics" visible role="tabpanel">
+      <b-collapse id="show-pics" visible-false role="tabpanel">
         <b-card-body>
           <b-card-text>
             <b-carousel
