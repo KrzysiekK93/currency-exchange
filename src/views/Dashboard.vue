@@ -68,7 +68,7 @@ export default {
         if (
           this.wallet[item] !== this.user.data.email &&
           this.wallet[item] == 0 &&
-          name !== "EUR"
+          item !== "EUR"
         ) {
           this.currency.push(item);
         }
