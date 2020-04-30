@@ -6,7 +6,7 @@
           >Cechy i cele</b-button
         >
       </b-card-header>
-      <b-collapse id="show-goals" visible role="tabpanel">
+      <b-collapse id="show-goals" visible-false role="tabpanel">
         <b-card-body>
           <b-card-text>
             <ul class="list-group">

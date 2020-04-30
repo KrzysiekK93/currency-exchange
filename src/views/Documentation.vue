@@ -5,6 +5,7 @@
         <Topic />
         <Goals />
         <Pictures />
+        <Links />
       </div>
     </div>
   </div>
@@ -15,13 +16,15 @@
 import Topic from "@/components/documentation/Topic.vue";
 import Goals from "@/components/documentation/Goals.vue";
 import Pictures from "@/components/documentation/Pictures.vue";
+import Links from "@/components/documentation/Links.vue";
 
 export default {
   name: "Documentation",
   components: {
     Topic,
     Goals,
-    Pictures
+    Pictures,
+    Links
   }
 };
 </script>
